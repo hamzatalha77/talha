@@ -4,4 +4,4 @@ const dashboard = () => {
   return <div></div>
 }
 
-export default page
+export default dashboard
