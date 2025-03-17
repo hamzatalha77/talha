@@ -13,7 +13,7 @@ const DashboardNavigation = () => {
     <>
       {links.map((link) => (
         <Link key={link.name} href={link.href}>
-          <a className="text-gray-900">{link.name}</a>
+          {link.name}
         </Link>
       ))}
     </>
