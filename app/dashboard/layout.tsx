@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { redirect } from 'next/navigation'
+import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs'
 export default async function DashboardLayout({
   children
 }: {
@@ -54,7 +55,9 @@ export default async function DashboardLayout({
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Logout</DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <LogoutLink>Logout</LogoutLink>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </header>
