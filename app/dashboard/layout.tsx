@@ -62,7 +62,6 @@ export default async function DashboardLayout({
           </DropdownMenuContent>
         </DropdownMenu>
       </header>
-      {children}
     </div>
   )
 }
