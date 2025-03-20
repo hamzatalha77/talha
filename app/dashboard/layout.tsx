@@ -1,3 +1,4 @@
+import React from 'react'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import DashboardNavigation from '../components/dashboard/DashboardNavigation'
 import { Button } from '@/components/ui/button'
@@ -61,6 +62,7 @@ export default async function DashboardLayout({
           </DropdownMenuContent>
         </DropdownMenu>
       </header>
+      {children}
     </div>
   )
 }
