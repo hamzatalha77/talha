@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link'
 import React from 'react'
 
@@ -7,7 +8,7 @@ const links = [
   { name: 'Products', href: '/dashboard/products' },
   { name: 'Categories', href: '/dashboard/categories' }
 ]
-const DashboardNavigation = () => {
+export function DashboardNavigation() {
   return (
     <>
       {links.map((link) => (
@@ -18,5 +19,3 @@ const DashboardNavigation = () => {
     </>
   )
 }
-
-export default DashboardNavigation

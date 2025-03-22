@@ -1,6 +1,7 @@
-import React from 'react'
+'use client'
+import { ReactNode } from 'react'
+import { DashboardNavigation } from '../components/dashboard/DashboardNavigation'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import DashboardNavigation from '../components/dashboard/DashboardNavigation'
 import { Button } from '@/components/ui/button'
 import { CircleUser, MenuIcon } from 'lucide-react'
 import {
@@ -17,12 +18,12 @@ import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs'
 export default async function DashboardLayout({
   children
 }: {
-  children: React.ReactNode
+  children: ReactNode
 }) {
   const { getUser } = getKindeServerSession()
   const user = await getUser()
 
-  if (!user || user.email !== 'hamza@gmail.com') {
+  if (!user || user.email !== 'hamzaios74s@gmail.com') {
     return redirect('/')
   }
   return (
@@ -62,7 +63,7 @@ export default async function DashboardLayout({
           </DropdownMenuContent>
         </DropdownMenu>
       </header>
-      {children}
+      <main className="my-5">{children}</main>
     </div>
   )
 }
