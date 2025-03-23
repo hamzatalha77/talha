@@ -9,7 +9,7 @@ const dashboard = () => {
       <Card>
         <CardHeader>
           <CardTitle>Total Revenue</CardTitle>
-          <DollarSign className="" />
+          <DollarSign className="h-4" />
         </CardHeader>
       </Card>
     </div>
