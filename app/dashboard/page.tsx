@@ -1,5 +1,6 @@
 'use client'
 import { Card, CardHeader, CardTitle } from '@/components/ui/card'
+import { DollarSign } from 'lucide-react'
 import React from 'react'
 
 const dashboard = () => {
@@ -8,6 +9,7 @@ const dashboard = () => {
       <Card>
         <CardHeader>
           <CardTitle>Total Revenue</CardTitle>
+          <DollarSign className="" />
         </CardHeader>
       </Card>
     </div>
