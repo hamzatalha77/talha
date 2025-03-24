@@ -20,12 +20,12 @@ export default async function DashboardLayout({
 }: {
   children: ReactNode
 }) {
-  const { getUser } = getKindeServerSession()
-  const user = await getUser()
+  // const { getUser } = getKindeServerSession()
+  // const user = await getUser()
 
-  if (!user || user.email !== 'hamzaios74s@gmail.com') {
-    return redirect('/')
-  }
+  // if (!user || user.email !== 'hamzaios74s@gmail.com') {
+  //   return redirect('/')
+  // }
   return (
     <div className="flex w-full flex-col max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <header className="sticky top-0 flex h-16 items-center justify-between gap-4 border-b bg-white">
