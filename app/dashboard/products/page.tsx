@@ -1,7 +1,12 @@
 import { Button } from '@/components/ui/button'
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card'
 import { PlusCircle } from 'lucide-react'
 import Link from 'next/link'
-import React from 'react'
 
 const ProductsPage = () => {
   return (
@@ -15,6 +20,14 @@ const ProductsPage = () => {
           </Link>
         </Button>
       </div>
+      <Card className="mt-5">
+        <CardHeader>
+          <CardTitle>Products</CardTitle>
+          <CardDescription>
+            Manage your products and view their sales perform
+          </CardDescription>
+        </CardHeader>
+      </Card>
     </>
   )
 }
