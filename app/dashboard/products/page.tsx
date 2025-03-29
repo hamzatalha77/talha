@@ -34,8 +34,10 @@ const ProductsPage = () => {
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[100px]">Image</TableHead>
-                <TableHead className="w-[100px]">Name</TableHead>
-                <TableHead className="w-[100px]">Price</TableHead>
+                <TableHead>Name</TableHead>
+                <TableHead>Price</TableHead>
+                <TableHead>Date</TableHead>
+                <TableHead className="text-end">Actions</TableHead>
               </TableRow>
             </TableHeader>
           </Table>
