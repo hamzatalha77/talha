@@ -34,6 +34,8 @@ const ProductsPage = () => {
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[100px]">Image</TableHead>
+                <TableHead className="w-[100px]">Name</TableHead>
+                <TableHead className="w-[100px]">Price</TableHead>
               </TableRow>
             </TableHeader>
           </Table>
