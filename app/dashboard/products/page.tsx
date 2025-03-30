@@ -48,7 +48,7 @@ const ProductsPage = () => {
             </TableHeader>
             <TableBody>
               <TableCell>
-                <UserIcon></UserIcon>
+                <UserIcon className="h-16 w-16"></UserIcon>
               </TableCell>
             </TableBody>
           </Table>
