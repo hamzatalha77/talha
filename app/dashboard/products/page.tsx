@@ -13,7 +13,7 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table'
-import { PlusCircle, Table } from 'lucide-react'
+import { PlusCircle, Table, UserIcon } from 'lucide-react'
 import Link from 'next/link'
 
 const ProductsPage = () => {
@@ -47,7 +47,9 @@ const ProductsPage = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              <TableCell></TableCell>
+              <TableCell>
+                <UserIcon></UserIcon>
+              </TableCell>
             </TableBody>
           </Table>
         </CardContent>
