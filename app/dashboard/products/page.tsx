@@ -6,7 +6,13 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card'
-import { TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import {
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from '@/components/ui/table'
 import { PlusCircle, Table } from 'lucide-react'
 import Link from 'next/link'
 
@@ -40,6 +46,9 @@ const ProductsPage = () => {
                 <TableHead className="text-end">Actions</TableHead>
               </TableRow>
             </TableHeader>
+            <TableBody>
+              <TableCell></TableCell>
+            </TableBody>
           </Table>
         </CardContent>
       </Card>
