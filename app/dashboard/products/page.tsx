@@ -8,6 +8,8 @@ import {
 } from '@/components/ui/card'
 import {
   DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import {
@@ -55,17 +57,20 @@ const ProductsPage = () => {
               <TableCell>
                 <UserIcon className="h-16 w-16"></UserIcon>
               </TableCell>
-              <TableCell>Product Name</TableCell>
+              <TableCell>Nike Air</TableCell>
               <TableCell>Available</TableCell>
-              <TableCell>$100</TableCell>
-              <TableCell>2023-10-01</TableCell>
+              <TableCell>$100.00</TableCell>
+              <TableCell>2025/04/02</TableCell>
               <TableCell className="text-end">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button>
+                    <Button size="icon" variant="ghost">
                       <MoreHorizontal className="h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                  </DropdownMenuContent>
                 </DropdownMenu>
               </TableCell>
             </TableBody>
