@@ -74,7 +74,7 @@ const ProductsPage = () => {
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem className="cursor-pointer">
-                      <Link href="/dashboard/products/edit">Edit</Link>
+                      <Link>Edit</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem className="cursor-pointer text-red-500 hover:text-red-700">
                       Delete
