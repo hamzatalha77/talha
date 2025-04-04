@@ -106,7 +106,7 @@ const dashboard = () => {
                 <p className="text-sm font-medium">Hamza Talha</p>
                 <p className="text-sm text-muted-foreground">hamza@gmail.com</p>
               </div>
-              <p className="ml-auto font-medium">+$1,999.00</p>
+              <p className="ml-auto font-medium">+$2,999.00</p>
             </div>
             <div className="flex items-center gap-4">
               <Avatar className="hidden sm:flex h-9 w-9">
