@@ -56,7 +56,7 @@ export default async function DashboardLayout({
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>My Accounts</DropdownMenuLabel>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
               <LogoutLink>Logout</LogoutLink>
