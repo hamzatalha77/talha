@@ -21,7 +21,7 @@ const dashboard = () => {
             <DollarSign className="h-4 w-4 text-green-500" />
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold">$100.000</p>
+            <p className="text-2xl font-bold">$200.000</p>
             <p className="text-xs text-muted-foreground">
               Based on 100 Charges
             </p>
@@ -57,7 +57,7 @@ const dashboard = () => {
             <User2 className="h-4 w-4 text-orange-500" />
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold">120</p>
+            <p className="text-2xl font-bold">130</p>
             <p className="text-xs text-muted-foreground">
               Total Users Signed Up
             </p>
