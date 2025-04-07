@@ -30,9 +30,8 @@ const ProductsPage = () => {
       <div className="flex items-center justify-end">
         <Button asChild className="flex items-center gap-x-2">
           <Link href="/dashboard/products/create">
-            <PlusCircle className="w-3.5 h-3.5">
-              <span>Add Products</span>
-            </PlusCircle>
+            <PlusCircle className="w-3.5 h-3.5" />
+            <span>Add Products</span>
           </Link>
         </Button>
       </div>
@@ -56,32 +55,30 @@ const ProductsPage = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              <TableCell>
-                <UserIcon className="h-16 w-16"></UserIcon>
-              </TableCell>
-              <TableCell>Nike Air</TableCell>
-              <TableCell>Available</TableCell>
-              <TableCell>$100.00</TableCell>
-              <TableCell>2025/04/02</TableCell>
-              <TableCell className="text-end">
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button size="icon" variant="ghost">
-                      <MoreHorizontal className="h-4 w-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem className="cursor-pointer">
-                      <Link href="/">Edit</Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer text-red-500 hover:text-red-700">
-                      Delete
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </TableCell>
+              <TableRow>
+                <TableCell>
+                  <UserIcon className="h-16 w-16" />
+                </TableCell>
+                <TableCell>Nike Air</TableCell>
+                <TableCell>Available</TableCell>
+                <TableCell>$100.00</TableCell>
+                <TableCell>2025/04/02</TableCell>
+                <TableCell className="text-end">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button size="icon" variant="ghost">
+                        <MoreHorizontal className="h-4 w-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>Edit</DropdownMenuItem>
+                      <DropdownMenuItem>Delete</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </TableCell>
+              </TableRow>
             </TableBody>
           </Table>
         </CardContent>
