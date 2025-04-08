@@ -1,5 +1,14 @@
 import { Button } from '@/components/ui/button'
-import { Card, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+
 import { ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
@@ -15,10 +24,23 @@ const ProductCreateRoute = () => {
         </Button>
         <h1 className="text-xl font-semibold tracking-tight">New Product</h1>
       </div>
-      <Card>
+      <Card className="mt-5">
         <CardHeader>
           <CardTitle>Product Details</CardTitle>
+          <CardDescription>in this form you can create product</CardDescription>
         </CardHeader>
+        <CardContent>
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-3">
+              <Label>Name</Label>
+              <Input
+                type="text"
+                className="w-full"
+                placeholder="Product Name"
+              />
+            </div>
+          </div>
+        </CardContent>
       </Card>
     </form>
   )
