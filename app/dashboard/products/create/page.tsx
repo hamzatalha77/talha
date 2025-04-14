@@ -1,3 +1,4 @@
+import { UploadDropzone } from '@/app/lib/uploadThing'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -72,6 +73,10 @@ const ProductCreateRoute = () => {
                   <SelectItem value="archived">Archived</SelectItem>
                 </SelectContent>
               </Select>
+            </div>
+            <div className="flex flex-col gap-3">
+              <Label>Images</Label>
+              <UploadDropzone endpoint="imageUploader" />
             </div>
           </div>
         </CardContent>
