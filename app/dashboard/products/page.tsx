@@ -19,9 +19,10 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
+  TableRow,
+  Table
 } from '@/components/ui/table'
-import { MoreHorizontal, PlusCircle, Table, UserIcon } from 'lucide-react'
+import { MoreHorizontal, PlusCircle, UserIcon } from 'lucide-react'
 import Link from 'next/link'
 
 const ProductsPage = () => {

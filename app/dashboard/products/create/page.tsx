@@ -1,5 +1,4 @@
 'use client'
-import { UploadDropzone } from '@/app/lib/uplaodthing'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -19,10 +18,10 @@ import {
 } from '@/components/ui/select'
 import { Switch } from '@/components/ui/switch'
 import { Textarea } from '@/components/ui/textarea'
-
 import { ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
+import { UploadDropzone } from '@/app/lib/uplaodthing'
 
 const ProductCreateRoute = () => {
   return (
