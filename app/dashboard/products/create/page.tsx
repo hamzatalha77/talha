@@ -1,4 +1,5 @@
-import { UploadDropzone } from '@/app/lib/uploadThing'
+'use client'
+import { UploadDropzone } from '@/app/lib/uplaodthing'
 import { Button } from '@/components/ui/button'
 import {
   Card,
