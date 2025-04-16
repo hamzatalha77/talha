@@ -4,6 +4,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle
 } from '@/components/ui/card'
@@ -76,10 +77,22 @@ const ProductCreateRoute = () => {
             </div>
             <div className="flex flex-col gap-3">
               <Label>Images</Label>
-              <UploadDropzone endpoint="imageUploader" />
+              <UploadDropzone
+                endpoint="imageUploader"
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                onClientUploadComplete={(res) => {
+                  alert('Finished uploading')
+                }}
+                onUploadError={() => {
+                  alert('Error uploading')
+                }}
+              />
             </div>
           </div>
         </CardContent>
+        <CardFooter>
+          <Button type="submit">Create Product</Button>
+        </CardFooter>
       </Card>
     </form>
   )
