@@ -1,13 +1,10 @@
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url)
-  const email = searchParams.get('email')
-  const password = searchParams.get('password')
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 
-  if (!email || !password) {
-    return new Response('Missing email or password', { status: 400 })
+export async function GET() {
+  const { getUser } = getKindeServerSession()
+  const user = await getUser()
+
+  if (!user || user === null || !user.id) {
+    throw new Error('User not found')
   }
-
-  // Simulate user creation
-  const user = { id: Date.now(), email, password }
-  return new Response(JSON.stringify(user), { status: 201 })
 }
