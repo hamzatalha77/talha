@@ -7,4 +7,6 @@ export async function GET() {
   if (!user || user === null || !user.id) {
     throw new Error('Something went wrong...')
   }
+
+  const dbUser = await prisma
 }
