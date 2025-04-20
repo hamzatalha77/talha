@@ -5,6 +5,6 @@ export async function GET() {
   const user = await getUser()
 
   if (!user || user === null || !user.id) {
-    throw new Error('User not found')
+    throw new Error('Something went wrong...')
   }
 }
