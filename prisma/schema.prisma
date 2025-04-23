@@ -29,13 +29,13 @@ model Product{
   createdAt DateTime @default(now())
 }
 enum ProductStatus{
-draft 
+  draft 
   published 
   archived
 }
 
 enum Category{
-men 
-woman 
-kids
+  men 
+  women 
+  kids
 }
