@@ -19,11 +19,23 @@ model User{
 }
 
 model Product{
-  id String @id @unique
+  id String @id @default(uuid())
   name String
   description String
-  price Float
-  imageUrl String
-
+  status ProductStatus
+  price Int
+  images String[]
+  category Category
   createdAt DateTime @default(now())
+}
+enum ProductStatus{
+draft 
+  published 
+  archived
+}
+
+enum Category{
+men 
+woman 
+kids
 }
