@@ -23,8 +23,11 @@ import { ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { UploadDropzone } from '@/app/lib/uplaodthing'
+import { useFormState } from 'react-dom'
+import { createProduct } from '@/app/actions'
 
 const ProductCreateRoute = () => {
+  const [lastResult, action] = useFormState(createProduct, undefined)
   return (
     <form>
       <div className="flex items-center gap-4">
