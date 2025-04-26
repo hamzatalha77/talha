@@ -38,7 +38,7 @@ const OrdersPage = () => {
               <TableCell>
                 <p className="font-medium">Hamza Talha</p>
                 <p className="hidden md:flex text-sm text-muted-foreground">
-                  hamza_ta7@gmail.com
+                  hamza_ta7@hotmail.com
                 </p>
               </TableCell>
               <TableCell>Sale</TableCell>
