@@ -36,7 +36,7 @@ const OrdersPage = () => {
           <TableBody>
             <TableRow>
               <TableCell>
-                <p className="font-medium">Hamza Talha</p>
+                <p className="font-medium">Hamza D Talha</p>
                 <p className="hidden md:flex text-sm text-muted-foreground">
                   hamza_ta7@hotmail.com
                 </p>
