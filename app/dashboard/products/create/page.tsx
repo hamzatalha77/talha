@@ -26,10 +26,16 @@ import { UploadDropzone } from '@/app/lib/uplaodthing'
 import { useFormState } from 'react-dom'
 import { createProduct } from '@/app/actions'
 import { useForm } from '@conform-to/react'
+import { productSchema } from '@/app/lib/zodSchemas'
 
 const ProductCreateRoute = () => {
   const [lastResult, action] = useFormState(createProduct, undefined)
-  const [form, fields] = useForm()
+  const [form, fields] = useForm({
+    lestResult,
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: productSchema })
+    }
+  })
   return (
     <form>
       <div className="flex items-center gap-4">
