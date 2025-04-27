@@ -25,9 +25,11 @@ import React from 'react'
 import { UploadDropzone } from '@/app/lib/uplaodthing'
 import { useFormState } from 'react-dom'
 import { createProduct } from '@/app/actions'
+import { useForm } from '@conform-to/react'
 
 const ProductCreateRoute = () => {
   const [lastResult, action] = useFormState(createProduct, undefined)
+  const [form, fields] = useForm()
   return (
     <form>
       <div className="flex items-center gap-4">
