@@ -35,6 +35,8 @@ const ProductCreateRoute = () => {
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: productSchema })
     }
+    shouldRevalidate: 'onBlur',
+    shouldRevalidate: 'onBlur'
   })
   return (
     <form>
