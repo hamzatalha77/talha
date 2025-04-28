@@ -59,6 +59,8 @@ const ProductCreateRoute = () => {
               <Label>Name</Label>
               <Input
                 type="text"
+                key={fields.name.key}
+                name={fields.name.name}
                 className="w-full"
                 placeholder="Product Name"
               />
