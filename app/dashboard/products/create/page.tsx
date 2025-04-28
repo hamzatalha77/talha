@@ -61,6 +61,7 @@ const ProductCreateRoute = () => {
                 type="text"
                 key={fields.name.key}
                 name={fields.name.name}
+                defaultValue={fields.name.initialValue}
                 className="w-full"
                 placeholder="Product Name"
               />
