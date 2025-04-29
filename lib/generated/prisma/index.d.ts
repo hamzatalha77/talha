@@ -2026,6 +2026,7 @@ export namespace Prisma {
     status: $Enums.ProductStatus | null
     price: number | null
     category: $Enums.Category | null
+    isFeatured: boolean | null
     createdAt: Date | null
   }
 
@@ -2036,6 +2037,7 @@ export namespace Prisma {
     status: $Enums.ProductStatus | null
     price: number | null
     category: $Enums.Category | null
+    isFeatured: boolean | null
     createdAt: Date | null
   }
 
@@ -2047,6 +2049,7 @@ export namespace Prisma {
     price: number
     images: number
     category: number
+    isFeatured: number
     createdAt: number
     _all: number
   }
@@ -2067,6 +2070,7 @@ export namespace Prisma {
     status?: true
     price?: true
     category?: true
+    isFeatured?: true
     createdAt?: true
   }
 
@@ -2077,6 +2081,7 @@ export namespace Prisma {
     status?: true
     price?: true
     category?: true
+    isFeatured?: true
     createdAt?: true
   }
 
@@ -2088,6 +2093,7 @@ export namespace Prisma {
     price?: true
     images?: true
     category?: true
+    isFeatured?: true
     createdAt?: true
     _all?: true
   }
@@ -2186,6 +2192,7 @@ export namespace Prisma {
     price: number
     images: string[]
     category: $Enums.Category
+    isFeatured: boolean
     createdAt: Date
     _count: ProductCountAggregateOutputType | null
     _avg: ProductAvgAggregateOutputType | null
@@ -2216,6 +2223,7 @@ export namespace Prisma {
     price?: boolean
     images?: boolean
     category?: boolean
+    isFeatured?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["product"]>
 
@@ -2227,6 +2235,7 @@ export namespace Prisma {
     price?: boolean
     images?: boolean
     category?: boolean
+    isFeatured?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["product"]>
 
@@ -2238,6 +2247,7 @@ export namespace Prisma {
     price?: boolean
     images?: boolean
     category?: boolean
+    isFeatured?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["product"]>
 
@@ -2249,10 +2259,11 @@ export namespace Prisma {
     price?: boolean
     images?: boolean
     category?: boolean
+    isFeatured?: boolean
     createdAt?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "status" | "price" | "images" | "category" | "createdAt", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "status" | "price" | "images" | "category" | "isFeatured" | "createdAt", ExtArgs["result"]["product"]>
 
   export type $ProductPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Product"
@@ -2265,6 +2276,7 @@ export namespace Prisma {
       price: number
       images: string[]
       category: $Enums.Category
+      isFeatured: boolean
       createdAt: Date
     }, ExtArgs["result"]["product"]>
     composites: {}
@@ -2696,6 +2708,7 @@ export namespace Prisma {
     readonly price: FieldRef<"Product", 'Int'>
     readonly images: FieldRef<"Product", 'String[]'>
     readonly category: FieldRef<"Product", 'Category'>
+    readonly isFeatured: FieldRef<"Product", 'Boolean'>
     readonly createdAt: FieldRef<"Product", 'DateTime'>
   }
     
@@ -3097,6 +3110,7 @@ export namespace Prisma {
     price: 'price',
     images: 'images',
     category: 'category',
+    isFeatured: 'isFeatured',
     createdAt: 'createdAt'
   };
 
@@ -3195,6 +3209,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3279,6 +3300,7 @@ export namespace Prisma {
     price?: IntFilter<"Product"> | number
     images?: StringNullableListFilter<"Product">
     category?: EnumCategoryFilter<"Product"> | $Enums.Category
+    isFeatured?: BoolFilter<"Product"> | boolean
     createdAt?: DateTimeFilter<"Product"> | Date | string
   }
 
@@ -3290,6 +3312,7 @@ export namespace Prisma {
     price?: SortOrder
     images?: SortOrder
     category?: SortOrder
+    isFeatured?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -3304,6 +3327,7 @@ export namespace Prisma {
     price?: IntFilter<"Product"> | number
     images?: StringNullableListFilter<"Product">
     category?: EnumCategoryFilter<"Product"> | $Enums.Category
+    isFeatured?: BoolFilter<"Product"> | boolean
     createdAt?: DateTimeFilter<"Product"> | Date | string
   }, "id">
 
@@ -3315,6 +3339,7 @@ export namespace Prisma {
     price?: SortOrder
     images?: SortOrder
     category?: SortOrder
+    isFeatured?: SortOrder
     createdAt?: SortOrder
     _count?: ProductCountOrderByAggregateInput
     _avg?: ProductAvgOrderByAggregateInput
@@ -3334,6 +3359,7 @@ export namespace Prisma {
     price?: IntWithAggregatesFilter<"Product"> | number
     images?: StringNullableListFilter<"Product">
     category?: EnumCategoryWithAggregatesFilter<"Product"> | $Enums.Category
+    isFeatured?: BoolWithAggregatesFilter<"Product"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
   }
 
@@ -3408,6 +3434,7 @@ export namespace Prisma {
     price: number
     images?: ProductCreateimagesInput | string[]
     category: $Enums.Category
+    isFeatured?: boolean
     createdAt?: Date | string
   }
 
@@ -3419,6 +3446,7 @@ export namespace Prisma {
     price: number
     images?: ProductCreateimagesInput | string[]
     category: $Enums.Category
+    isFeatured?: boolean
     createdAt?: Date | string
   }
 
@@ -3430,6 +3458,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     images?: ProductUpdateimagesInput | string[]
     category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -3441,6 +3470,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     images?: ProductUpdateimagesInput | string[]
     category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -3452,6 +3482,7 @@ export namespace Prisma {
     price: number
     images?: ProductCreateimagesInput | string[]
     category: $Enums.Category
+    isFeatured?: boolean
     createdAt?: Date | string
   }
 
@@ -3463,6 +3494,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     images?: ProductUpdateimagesInput | string[]
     category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -3474,6 +3506,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     images?: ProductUpdateimagesInput | string[]
     category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -3595,6 +3628,11 @@ export namespace Prisma {
     not?: NestedEnumCategoryFilter<$PrismaModel> | $Enums.Category
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type ProductCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -3603,6 +3641,7 @@ export namespace Prisma {
     price?: SortOrder
     images?: SortOrder
     category?: SortOrder
+    isFeatured?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -3617,6 +3656,7 @@ export namespace Prisma {
     status?: SortOrder
     price?: SortOrder
     category?: SortOrder
+    isFeatured?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -3627,6 +3667,7 @@ export namespace Prisma {
     status?: SortOrder
     price?: SortOrder
     category?: SortOrder
+    isFeatured?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -3670,6 +3711,14 @@ export namespace Prisma {
     _max?: NestedEnumCategoryFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -3701,6 +3750,10 @@ export namespace Prisma {
 
   export type EnumCategoryFieldUpdateOperationsInput = {
     set?: $Enums.Category
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -3784,6 +3837,11 @@ export namespace Prisma {
     not?: NestedEnumCategoryFilter<$PrismaModel> | $Enums.Category
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedEnumProductStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.ProductStatus | EnumProductStatusFieldRefInput<$PrismaModel>
     in?: $Enums.ProductStatus[] | ListEnumProductStatusFieldRefInput<$PrismaModel>
@@ -3829,6 +3887,14 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumCategoryFilter<$PrismaModel>
     _max?: NestedEnumCategoryFilter<$PrismaModel>
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
 
