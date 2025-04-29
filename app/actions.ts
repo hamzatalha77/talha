@@ -4,7 +4,6 @@ import { parseWithZod } from '@conform-to/zod'
 import { productSchema } from './lib/zodSchemas'
 export async function createProduct(prevState: unknown, formData: FormData) {
   const { getUser } = getKindeServerSession()
-
   const user = await getUser()
 
   if (!user || user.email !== 'hamza_ta7@hotmail.com') {

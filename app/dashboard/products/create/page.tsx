@@ -23,20 +23,21 @@ import { ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { UploadDropzone } from '@/app/lib/uplaodthing'
-import { useFormState } from 'react-dom'
 import { createProduct } from '@/app/actions'
+import { useFormState } from 'react-dom'
 import { useForm } from '@conform-to/react'
 import { productSchema } from '@/app/lib/zodSchemas'
+import { parseWithZod } from '@conform-to/zod'
 
 const ProductCreateRoute = () => {
   const [lastResult, action] = useFormState(createProduct, undefined)
   const [form, fields] = useForm({
-    lestResult,
+    lastResult,
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: productSchema })
     },
-    shouldRevalidate: 'onBlur',
-    shouldRevalidate: 'input'
+    shouldValidate: 'onBlur',
+    shouldRevalidate: 'onInput'
   })
   return (
     <form>
