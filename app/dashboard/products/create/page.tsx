@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import { Button } from '@/components/ui/button'
 import {
@@ -125,6 +126,7 @@ const ProductCreateRoute = () => {
                 value={images}
                 key={fields.images.key}
                 name={fields.images.name}
+                defaultValue={fields.images.initialValue as any}
               />
               {images.length > 0 ? (
                 <div className="flex gap-5">
