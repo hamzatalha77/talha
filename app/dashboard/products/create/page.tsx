@@ -120,6 +120,7 @@ const ProductCreateRoute = () => {
             </div>
             <div className="flex flex-col gap-3">
               <Label>Images</Label>
+              <input type="hidden" />
               {images.length > 0 ? (
                 <div className="flex gap-5">
                   {images.map((image, index) => (
@@ -145,6 +146,7 @@ const ProductCreateRoute = () => {
                   }}
                 />
               )}
+              <p className="text-red-500">{fields.images.errors}</p>
             </div>
           </div>
         </CardContent>
