@@ -120,7 +120,7 @@ const ProductCreateRoute = () => {
             </div>
             <div className="flex flex-col gap-3">
               <Label>Images</Label>
-              <input type="hidden" />
+              <input type="hidden" value={images} />
               {images.length > 0 ? (
                 <div className="flex gap-5">
                   {images.map((image, index) => (
