@@ -158,7 +158,7 @@ const ProductCreateRoute = () => {
           </div>
         </CardContent>
         <CardFooter>
-          <Button type="submit">Create Product</Button>
+          <Button type="submit">Create Products</Button>
         </CardFooter>
       </Card>
     </form>
