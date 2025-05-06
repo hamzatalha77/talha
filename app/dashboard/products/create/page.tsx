@@ -20,7 +20,7 @@ import {
 } from '@/components/ui/select'
 import { Switch } from '@/components/ui/switch'
 import { Textarea } from '@/components/ui/textarea'
-import { ChevronLeft } from 'lucide-react'
+import { ChevronLeft, XIcon } from 'lucide-react'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { UploadDropzone } from '@/app/lib/uplaodthing'
@@ -139,7 +139,9 @@ const ProductCreateRoute = () => {
                         alt="product image"
                         className="w-full h-full object-cover rounded-lg border"
                       />
-                      <button className="absolute -top-3 -right-3 bg-red-500 p-2"></button>
+                      <button className="absolute -top-3 -right-3 bg-red-500 p-2 rounded-lg text-white">
+                        <XIcon className="" />
+                      </button>
                     </div>
                   ))}
                 </div>
