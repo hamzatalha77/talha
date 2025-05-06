@@ -139,6 +139,7 @@ const ProductCreateRoute = () => {
                         alt="product image"
                         className="w-full h-full object-cover rounded-lg border"
                       />
+                      <button className=""></button>
                     </div>
                   ))}
                 </div>
