@@ -140,7 +140,7 @@ const ProductCreateRoute = () => {
                         className="w-full h-full object-cover rounded-lg border"
                       />
                       <button className="absolute -top-3 -right-3 bg-red-500 p-2 rounded-lg text-white">
-                        <XIcon className="" />
+                        <XIcon className="w-3 h-3" />
                       </button>
                     </div>
                   ))}
