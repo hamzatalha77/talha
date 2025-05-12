@@ -138,3 +138,29 @@
     updateTotal();
   });
 </script>
+
+
+function doPost(e) {
+  try {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    const data = JSON.parse(e.postData.contents);
+
+    sheet.appendRow([
+      new Date(),
+      data.orderNumber || '',
+      data.productTitle || '',
+      data.variant || '',
+      data.quantity || '',
+      data.total || '',
+      data.productURL || '',
+      data.name || '',
+      data.phone || '',
+      data.city || '',
+      data.email || ''
+    ]);
+
+    return ContentService.createTextOutput("Success").setMimeType(ContentService.MimeType.TEXT);
+  } catch (err) {
+    return ContentService.createTextOutput("Error: " + err.message);
+  }
+}
