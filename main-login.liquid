@@ -1,621 +1,140 @@
-{{ 'customer.css' | asset_url | stylesheet_tag }}
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+<form id="cod-order-form" style="max-width: 400px; margin: auto;">
+  <style>
+    .cod-label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.3rem;
     }
-  }
-{%- endstyle -%}
-
-{%- if section.settings.enable_shop_login_button == false -%}
-  {%- assign hide_shop_login_button = true -%}
-{%- endif -%}
-
-<div class="customer login section-{{ section.id }}-padding">
-  <h1 id="recover" tabindex="-1">
-    {{ 'customer.recover_password.title' | t }}
-  </h1>
-  <div>
-    <p>
-      {{ 'customer.recover_password.subtext' | t }}
-    </p>
-
-    {%- form 'recover_customer_password' -%}
-      {% assign recover_success = form.posted_successfully? %}
-      <div class="field">
-        <input
-          type="email"
-          value=""
-          name="email"
-          id="RecoverEmail"
-          autocorrect="off"
-          autocapitalize="off"
-          autocomplete="email"
-          {% if form.errors %}
-            aria-invalid="true"
-            aria-describedby="RecoverEmail-email-error"
-            autofocus
-          {% endif %}
-          placeholder="{{ 'customer.login_page.email' | t }}"
-        >
-        <label for="RecoverEmail">
-          {{ 'customer.login_page.email' | t }}
-        </label>
-      </div>
-      {%- if form.errors -%}
-        <small id="RecoverEmail-email-error" class="form__message">
-          <span class="svg-wrapper">
-            {{- 'icon-error.svg' | inline_asset_content -}}
-          </span>
-          {{ form.errors.messages.form }}
-        </small>
-      {%- endif -%}
-
-      <button>
-        {{ 'customer.login_page.submit' | t }}
-      </button>
-
-      <a href="#login">
-        {{ 'customer.login_page.cancel' | t }}
-      </a>
-    {%- endform -%}
-  </div>
-
-  <h1 id="login" tabindex="-1">
-    {{ 'customer.login_page.title' | t }}
-  </h1>
-  <div>
-    {%- if recover_success == true -%}
-      <h3 class="form__message" tabindex="-1" autofocus>
-        <span class="svg-wrapper">
-          {{- 'icon-success.svg' | inline_asset_content -}}
-        </span>
-        {{ 'customer.recover_password.success' | t }}
-      </h3>
-    {%- endif -%}
-    {%- form 'customer_login', novalidate: 'novalidate' -%}
-      {%- if form.errors -%}
-        <h2 class="form__message" tabindex="-1" autofocus>
-          <span class="visually-hidden">{{ 'accessibility.error' | t }} </span>
-          <span class="svg-wrapper">
-            {{- 'icon-error.svg' | inline_asset_content -}}
-          </span>
-          {{ 'templates.contact.form.error_heading' | t }}
-        </h2>
-        {{ form.errors | default_errors }}
-      {%- endif -%}
-
-      {%- if shop.features.login_with_shop_classic_customer_accounts? -%}
-        <section name="sign-in-with-shop-provider">
-          {{ shop | login_button: hide_button: hide_shop_login_button }}
-
-          {%- unless hide_shop_login_button -%}
-            <p>
-              {{ 'customer.login_page.alternate_provider_separator' | t }}
-            </p>
-          {%- endunless -%}
-        </section>
-      {%- endif -%}
-
-      <div class="field">
-        <input
-          type="email"
-          name="customer[email]"
-          id="CustomerEmail"
-          autocomplete="email"
-          autocorrect="off"
-          autocapitalize="off"
-          {% if form.errors contains 'form' %}
-            aria-invalid="true"
-          {% endif %}
-          placeholder="{{ 'customer.login_page.email' | t }}"
-        >
-        <label for="CustomerEmail">
-          {{ 'customer.login_page.email' | t }}
-        </label>
-      </div>
-
-      {%- if form.password_needed -%}
-        <div class="field">
-          <input
-            type="password"
-            value=""
-            name="customer[password]"
-            id="CustomerPassword"
-            autocomplete="current-password"
-            {% if form.errors contains 'form' %}
-              aria-invalid="true"
-            {% endif %}
-            placeholder="{{ 'customer.login_page.password' | t }}"
-          >
-          <label for="CustomerPassword">
-            {{ 'customer.login_page.password' | t }}
-          </label>
-        </div>
-
-        <a href="#recover">
-          {{ 'customer.login_page.forgot_password' | t }}
-        </a>
-      {%- endif -%}
-
-      <button>
-        {{ 'customer.login_page.sign_in' | t }}
-      </button>
-
-      <a href="{{ routes.account_register_url }}">
-        {{ 'customer.login_page.create_account' | t }}
-      </a>
-    {%- endform -%}
-  </div>
-
-  {%- if shop.checkout.guest_login -%}
-    <div>
-      <hr>
-      <h2>{{ 'customer.login_page.guest_title' | t }}</h2>
-
-      {%- form 'guest_login' -%}
-        <button>
-          {{ 'customer.login_page.guest_continue' | t }}
-        </button>
-      {%- endform -%}
-    </div>
-  {%- endif -%}
-</div>
-
-{% schema %}
-{
-  "name": "t:sections.main-login.name",
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "enable_shop_login_button",
-      "label": "t:sections.main-login.shop_login_button.enable",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+    .cod-input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
     }
-  ]
-}
-{% endschema %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-test the <search></search>
-
-
-
-
-
-
-{{ 'customer.css' | asset_url | stylesheet_tag }}
-
-{%- style -%}
-   .section-{{ section.id }}-padding {
-     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-   }
-
-   @media screen and (min-width: 750px) {
-     .section-{{ section.id }}-padding {
-       padding-top: {{ section.settings.padding_top }}px;
-       padding-bottom: {{ section.settings.padding_bottom }}px;
-     }
-   }
-
-   .customer-login-unique * {
-    font-family: 'Montserrat', sans-serif;
-
-  }
-
-  .customer-login-unique {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  * {
-  	box-sizing: border-box;
-  }
-  .customer-login-unique h1 {
-  	font-weight: bold;
-  	margin: 0;
-  }
-  .customer-login-unique h2 {
-  	text-align: center;
-  }
-  .customer-login-unique p {
-  	font-size: 14px;
-  	font-weight: 100;
-  	line-height: 20px;
-  	letter-spacing: 0.5px;
-  	margin: 20px 0 30px;
-  }
-  .customer-login-unique span {
-  	font-size: 12px;
-  }
-  .customer-login-unique a {
-  	color: #333;
-  	font-size: 14px;
-  	text-decoration: none;
-  	margin: 15px 0;
-  }
-  .customer-login-unique button {
-  	border-radius: 20px;
-  	border: 1px solid #FF4B2B;
-  	background-color: #FF4B2B;
-  	color: #FFFFFF;
-  	font-size: 12px;
-  	font-weight: bold;
-  	padding: 12px 45px;
-  	letter-spacing: 1px;
-  	text-transform: uppercase;
-  	transition: transform 80ms ease-in;
-  }
-  .customer-login-unique button:active {
-  	transform: scale(0.95);
-  }
-  .customer-login-unique button:focus {
-  	outline: none;
-  }
-  .customer-login-unique button.ghost {
-  	background-color: transparent;
-  	border-color: #FFFFFF;
-  }
-  .customer-login-unique form {
-  	background-color: #FFFFFF;
-  	display: flex;
-  	align-items: center;
-  	justify-content: center;
-  	flex-direction: column;
-  	padding: 0 50px;
-  	height: 100%;
-  	text-align: center;
-  }
-  .customer-login-unique input {
-  	background-color: #eee;
-  	border: none;
-  	padding: 12px 15px;
-  	margin: 8px 0;
-  	width: 100%;
-  }
-  .customer-login-unique .container {
-  	background-color: #fff;
-  	border-radius: 10px;
-    	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
-  			0 10px 10px rgba(0,0,0,0.22);
-  	position: relative;
-  	overflow: hidden;
-  	width: 768px;
-  	max-width: 100%;
-  	min-height: 480px;
-  }
-  .customer-login-unique .form-container {
-  	position: absolute;
-  	top: 0;
-  	height: 100%;
-  	transition: all 0.6s ease-in-out;
-  }
-  .customer-login-unique .sign-in-container {
-  	left: 0;
-  	width: 50%;
-  	z-index: 2;
-  }
-  .customer-login-unique .container.right-panel-active .sign-in-container {
-  	transform: translateX(100%);
-  }
-  .customer-login-unique .sign-up-container {
-  	left: 0;
-  	width: 50%;
-  	opacity: 0;
-  	z-index: 1;
-  }
-  .customer-login-unique .container.right-panel-active .sign-up-container {
-  	transform: translateX(100%);
-  	opacity: 1;
-  	z-index: 5;
-  	animation: show 0.6s;
-  }
-  @keyframes show {
-    0%, 49.99% {
-  		opacity: 0;
-  		z-index: 1;
-  	}
-
-    50%, 100% {
-  		opacity: 1;
-  		z-index: 5;
-  	}
-  }
-  .customer-login-unique .overlay-container {
-  	position: absolute;
-  	top: 0;
-  	left: 50%;
-  	width: 50%;
-  	height: 100%;
-  	overflow: hidden;
-  	transition: transform 0.6s ease-in-out;
-  	/* z-index: 100; */
-  }
-
-  .container.right-panel-active .overlay-container{
-  	transform: translateX(-100%);
-  }
-  .customer-login-unique .overlay {
-  	background: #FF416C;
-  	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-  	background: linear-gradient(to right, #FF4B2B, #FF416C);
-  	background-repeat: no-repeat;
-  	background-size: cover;
-  	background-position: 0 0;
-  	color: #FFFFFF;
-  	position: relative;
-  	left: -100%;
-  	height: 100%;
-  	width: 200%;
-    	transform: translateX(0);
-  	transition: transform 0.6s ease-in-out;
-  }
-  .customer-login-unique .container.right-panel-active .overlay {
-    	transform: translateX(50%);
-  }
-  .customer-login-unique .overlay-panel {
-  	position: absolute;
-  	display: flex;
-  	align-items: center;
-  	justify-content: center;
-  	flex-direction: column;
-  	padding: 0 40px;
-  	text-align: center;
-  	top: 0;
-  	height: 100%;
-  	width: 50%;
-  	transform: translateX(0);
-  	transition: transform 0.6s ease-in-out;
-  }
-  .customer-login-unique .overlay-left {
-  	transform: translateX(-20%);
-  }
-  .customer-login-unique .container.right-panel-active .overlay-left {
-  	transform: translateX(0);
-  }
-  .customer-login-unique .overlay-right {
-  	right: 0;
-  	transform: translateX(0);
-  }
-  .customer-login-unique .container.right-panel-active .overlay-right {
-  	transform: translateX(20%);
-  }
-
-  .customer-login-unique footer {
-      background-color: #222;
-      color: #fff;
-      font-size: 14px;
-      bottom: 0;
-      position: fixed;
-      left: 0;
-      right: 0;
-      text-align: center;
-      z-index: 999;
-  }
-  .customer-login-unique footer p {
-      margin: 10px 0;
-  }
-  .customer-login-unique footer i {
-      color: red;
-  }
-  .customer-login-unique footer a {
-      color: #3c97bf;
-      text-decoration: none;
-  }
-
-    @media screen and (max-width: 750px) {
-      .customer-login-unique .container {
-        width: 90vw;
-      }
-
-      .customer-login-unique .container.right-panel-active .sign-up-container {
-      	transform: translateX(0%);
-      	opacity: 1;
-      	z-index: 5;
-      	animation: show 0.6s;
-          width: 100%;
-      }
-
-      .customer-login-unique .container.right-panel-active .sign-in-container {
-      	transform: translateX(100%);
-      	opacity: 1;
-      	z-index: 5;
-      	animation: show 0.6s;
-          width: 100%;
-      }
-
-      .customer-login-unique .container .overlay-container {
-      	display: none;
-      }
-
-      .customer-login-unique .container .sign-up-container {
-      	transform: translateX(0%);
-      	opacity: 1;
-      	z-index: 5;
-      	animation: show 0.6s;
-          width: 100%;
-      }
-
-      .customer-login-unique .container .sign-in-container {
-      	transform: revert-layer;
-      	opacity: 1;
-          width: 100%;
-      	z-index: 5;
-      	animation: show 0.6s;
-      }
-
-      .mobile-swap-button {
-        text-decoration: underline;
-        cursor: pointer;
-        color: #FF4B2B;
-      }
-
-      .customer-login-unique .mobile-swap {
-        display: block;
-      }
+    .cod-submit {
+      width: 100%;
+      padding: 0.9rem;
+      background: #000;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
-    .mobile-swap {
-        display: none;
-      }
-
-    .padding-bottom {
-      padding-bottom: 10px;
+    .cod-success {
+      display: none;
+      margin-top: 1rem;
+      color: green;
+      font-weight: bold;
     }
-{%- endstyle -%}
+    #total-price {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+  </style>
 
-{%- if section.settings.enable_shop_login_button == false -%}
-  {%- assign hide_shop_login_button = true -%}
-{%- endif -%}
+  <div id="total-price">Total: ...</div>
 
-<div class="customer login section-{{ section.id }}-padding">
-  <div class="container" id="container">
-    <div class="form-container sign-up-container">
-      {%- form 'create_customer' -%}
-        {{ form.errors | default_errors }}
-        <h1 class="padding-bottom">Create Account</h1>
-        <input name="customer[name]" id="Name" type="text" placeholder="Name">
-        <input name="customer[email]" id="Email" type="email" placeholder="Email">
-        <input name="customer[password]" id="CreatePassword" type="password" placeholder="Password">
-        <button>Sign Up</button>
-        <div>
-          <p class="mobile-swap">or sign in <span class="mobile-swap-button" id="mobile-swap">here</span></p>
-        </div>
-      {%- endform -%}
-    </div>
-    <div class="form-container sign-in-container">
-      {%- form 'customer_login', novalidate: 'novalidate' -%}
-        <h1 class="padding-bottom">Sign in</h1>
-        {{ form.errors | default_errors }}
-        <input name="customer[email]" id="CustomerEmail" type="email" placeholder="Email">
-        <input name="customer[password]" id="CustomerPassword" type="password" placeholder="Password">
-        <a href="#">Forgot your password?</a>
-        <button>Sign In</button>
-        <div>
-          <p class="mobile-swap">or sign up <span class="mobile-swap-button" id="mobile-swap-2">here</span></p>
-        </div>
-      {%- endform -%}
-    </div>
-    <div class="overlay-container">
-      <div class="overlay">
-        <div class="overlay-panel overlay-left">
-          <h1>Welcome Back!</h1>
-          <p>To see your account dashboard and information, please login.</p>
-          <button class="ghost" id="signIn">Sign In</button>
-        </div>
-        <div class="overlay-panel overlay-right">
-          <h1>Hello, Friend!</h1>
-          <p>Simply create an account to gain access to exclusive member only perks!</p>
-          <button class="ghost" id="signUp">Sign Up</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  <label class="cod-label" for="name">Prénom</label>
+  <input type="text" id="name" class="cod-input" required>
+
+  <label class="cod-label" for="phone">Téléphone</label>
+  <input type="tel" id="phone" class="cod-input" required>
+
+  <label class="cod-label" for="city">Ville</label>
+  <input type="text" id="city" class="cod-input" required>
+
+  <label class="cod-label" for="email">E-mail</label>
+  <input type="email" id="email" class="cod-input" required>
+
+  <button type="submit" class="cod-submit">Ajouter la commande</button>
+  <div id="cod-success" class="cod-success">✅ Votre commande a été envoyée !</div>
+</form>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const signUpButton = document.getElementById('signUp');
-    const signInButton = document.getElementById('signIn');
-    const mobileSwap = document.getElementById('mobile-swap');
-    const mobileSwap2 = document.getElementById('mobile-swap-2');
-    const container = document.getElementById('container');
+  const form = document.getElementById('cod-order-form');
+  const success = document.getElementById('cod-success');
+  const totalPriceEl = document.getElementById('total-price');
 
-    signUpButton.addEventListener('click', () => {
-    	container.classList.add("right-panel-active");
+  const getPrice = () => {
+    const priceText = document.querySelector('.price__sale .price-item--sale, .price__regular .price-item--regular')?.innerText.trim();
+    const priceValue = priceText?.replace(/[^\d.]/g, '');
+    return parseFloat(priceValue || '0');
+  };
+
+  const updateTotal = () => {
+    const quantity = parseInt(document.querySelector('input[name="quantity"]')?.value || '1');
+    const unitPrice = getPrice();
+    const total = unitPrice * quantity;
+    totalPriceEl.textContent = `Total: ${total.toFixed(2)} MAD`;
+  };
+
+  document.querySelector('input[name="quantity"]')?.addEventListener('input', updateTotal);
+  updateTotal(); // initial
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const city = document.getElementById('city').value.trim();
+    const email = document.getElementById('email').value.trim();
+
+    const quantity = parseInt(document.querySelector('input[name="quantity"]')?.value || '1');
+    const unitPrice = getPrice();
+    const total = unitPrice * quantity;
+    const productTitle = document.querySelector('a.product__title h2.h1')?.innerText.trim() || "Produit inconnu";
+    const productURL = window.location.href;
+    const orderNumber = "COD-" + Date.now();
+
+    // ✅ Get variant text
+    const selectedVariantEl = document.querySelector('variant-selects legend span[data-selected-value]');
+    const variantLabel = selectedVariantEl?.parentNode?.childNodes[0]?.textContent?.trim().replace(':', '');
+    const variantValue = selectedVariantEl?.textContent?.trim();
+    const variant = variantLabel && variantValue ? `${variantLabel}: ${variantValue}` : "Aucune";
+
+    // ✅ WhatsApp Message
+    const message =
+      `🛒 Nouvelle commande:\n` +
+      `Commande: ${orderNumber}\n` +
+      `Produit: ${productTitle}\n` +
+      `Variante: ${variant}\n` +
+      `Quantité: ${quantity}\n` +
+      `Total: ${total.toFixed(2)} MAD\n` +
+      `Lien: ${productURL}\n` +
+      `Prénom: ${name}\n` +
+      `Téléphone: ${phone}\n` +
+      `Ville: ${city}\n` +
+      `Email: ${email}`;
+
+    // ✅ Google Sheets
+    const sheetURL = "https://script.google.com/macros/s/AKfycby31vJAo9-eBQMyK1MYNJPtMOtHfBcM2ak9BzehV5n4N7Z3T8B9jABdgbouOLSW4Epj/exec";
+    fetch(sheetURL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        orderNumber,
+        productTitle,
+        variant,
+        quantity,
+        total: `${total.toFixed(2)} MAD`,
+        productURL,
+        name,
+        phone,
+        city,
+        email
+      })
     });
 
-    signInButton.addEventListener('click', () => {
-    	container.classList.remove("right-panel-active");
-    });
+    // ✅ WhatsApp
+    const whatsappNumber = "212642130727";
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
 
-
-    mobileSwap.addEventListener('click', () => {
-    	container.classList.remove("right-panel-active");
-    });
-
-    mobileSwap2.addEventListener('click', () => {
-    	container.classList.add("right-panel-active");
-    });
-  })
+    success.style.display = "block";
+    form.reset();
+    updateTotal();
+  });
 </script>
-{% schema %}
-{
-  "name": "t:sections.main-login.name",
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "enable_shop_login_button",
-      "label": "t:sections.main-login.shop_login_button.enable",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
-  ]
-}
-{% endschema %}
