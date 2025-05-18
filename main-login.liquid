@@ -91,7 +91,7 @@
     const productURL = window.location.href;
     const orderNumber = "COD-" + Date.now();
 
-    // ✅ Get variant text
+    // ✅ Get variant tex
     const selectedVariantEl = document.querySelector('variant-selects legend span[data-selected-value]');
     const variantLabel = selectedVariantEl?.parentNode?.childNodes[0]?.textContent?.trim().replace(':', '');
     const variantValue = selectedVariantEl?.textContent?.trim();
