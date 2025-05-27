@@ -42,6 +42,10 @@ const ProductCreateRoute = () => {
     shouldValidate: 'onBlur',
     shouldRevalidate: 'onInput'
   })
+
+  const handleDelete = (index: number) => {
+    setImages(images.filter((_, i) => i !== index))
+  }
   return (
     <form id={form.id} onSubmit={form.onSubmit} action={action}>
       <div className="flex items-center gap-4">
@@ -139,7 +143,11 @@ const ProductCreateRoute = () => {
                         alt="product image"
                         className="w-full h-full object-cover rounded-lg border"
                       />
-                      <button className="absolute -top-3 -right-3 bg-red-500 p-2 rounded-lg text-white">
+                      <button
+                        type="button"
+                        onClick={() => handleDelete(index)}
+                        className="absolute -top-3 -right-3 bg-red-500 p-2 rounded-lg text-white"
+                      >
                         <XIcon className="w-3 h-3" />
                       </button>
                     </div>
