@@ -125,6 +125,10 @@ const ProductCreateRoute = () => {
             </div>
             <div className="flex flex-col gap-3">
               <Label>Category</Label>
+              <Select
+                key={fields.category.key}
+                name={fields.category.name}
+              ></Select>
             </div>
             <div className="flex flex-col gap-3">
               <Label>Images</Label>
