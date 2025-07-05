@@ -124,6 +124,9 @@ const ProductCreateRoute = () => {
               <p className="text-red-500">{fields.status.errors}</p>
             </div>
             <div className="flex flex-col gap-3">
+              <Label>Category</Label>
+            </div>
+            <div className="flex flex-col gap-3">
               <Label>Images</Label>
               <input
                 type="hidden"
