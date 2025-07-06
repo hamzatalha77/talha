@@ -129,7 +129,12 @@ const ProductCreateRoute = () => {
                 key={fields.category.key}
                 name={fields.category.name}
                 defaultValue={fields.category.initialValue}
-              ></Select>
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="select Category" />
+                </SelectTrigger>
+                <SelectContent></SelectContent>
+              </Select>
             </div>
             <div className="flex flex-col gap-3">
               <Label>Images</Label>
