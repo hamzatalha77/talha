@@ -128,6 +128,7 @@ const ProductCreateRoute = () => {
               <Select
                 key={fields.category.key}
                 name={fields.category.name}
+                defaultValue={fields.category.initialValue}
               ></Select>
             </div>
             <div className="flex flex-col gap-3">
