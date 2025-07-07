@@ -30,6 +30,7 @@ import { useForm } from '@conform-to/react'
 import { productSchema } from '@/app/lib/zodSchemas'
 import { parseWithZod } from '@conform-to/zod'
 import Image from 'next/image'
+import { categories } from '@/app/lib/categories'
 
 const ProductCreateRoute = () => {
   const [images, setImages] = useState<string[]>([])
@@ -133,7 +134,13 @@ const ProductCreateRoute = () => {
                 <SelectTrigger>
                   <SelectValue placeholder="select Category" />
                 </SelectTrigger>
-                <SelectContent></SelectContent>
+                <SelectContent>
+                  {categories.map((category) => (
+                    <SelectItem key={category.id} value={category.name}>
+                      {category.title}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
               </Select>
             </div>
             <div className="flex flex-col gap-3">
