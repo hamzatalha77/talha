@@ -25,7 +25,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { UploadDropzone } from '@/app/lib/uplaodthing'
 import { createProduct } from '@/app/actions'
-import { useFormState } from 'react-dom'
+import { useActionState } from 'react'
 import { useForm } from '@conform-to/react'
 import { productSchema } from '@/app/lib/zodSchemas'
 import { parseWithZod } from '@conform-to/zod'
@@ -34,7 +34,7 @@ import { categories } from '@/app/lib/categories'
 
 const ProductCreateRoute = () => {
   const [images, setImages] = useState<string[]>([])
-  const [lastResult, action] = useFormState(createProduct, undefined)
+  const [lastResult, action] = useActionState(createProduct, undefined)
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {
@@ -142,6 +142,7 @@ const ProductCreateRoute = () => {
                   ))}
                 </SelectContent>
               </Select>
+              <p className="text-red-500">{fields.category.errors}</p>
             </div>
             <div className="flex flex-col gap-3">
               <Label>Images</Label>
