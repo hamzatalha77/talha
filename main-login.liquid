@@ -64,7 +64,7 @@
     const priceValue = priceText?.replace(/[^\d.]/g, '');
     return parseFloat(priceValue || '0');
   };
-
+  
   const updateTotal = () => {
     const quantity = parseInt(document.querySelector('input[name="quantity"]')?.value || '1');
     const unitPrice = getPrice();
